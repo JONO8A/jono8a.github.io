@@ -1427,17 +1427,21 @@ function createPermanentStar() {
   starsEl.appendChild(s);
 }
 
-// ---------- Secret Developer Backdoor: 5 clicks on Cake SVG reveals wishes ----------
-let cakeClicks = 0;
-document.querySelector('.cake-svg').addEventListener('click', () => {
-  cakeClicks++;
-  if (cakeClicks >= 5) {
-    cakeClicks = 0;
-    revealSecretWishes();
-  }
-  // Reset clicks after 3 seconds of inactivity
-  setTimeout(() => cakeClicks = 0, 3000);
-});
+// ---------- Secret Developer Backdoor: 5 clicks on Footer Paragraph reveals wishes ----------
+let footerClicks = 0;
+const footerP = document.querySelector('.footer p');
+if (footerP) {
+  footerP.style.cursor = 'pointer';
+  footerP.addEventListener('click', () => {
+    footerClicks++;
+    if (footerClicks >= 5) {
+      footerClicks = 0;
+      revealSecretWishes();
+    }
+    // Reset clicks after 3 seconds of inactivity
+    setTimeout(() => footerClicks = 0, 3000);
+  });
+}
 
 function revealSecretWishes() {
   const wishes = JSON.parse(localStorage.getItem('uxue_wishes') || '[]');
@@ -1459,9 +1463,12 @@ function extinguishFlame(id) {
   blownCandles[id] = true;
   candlesCount--;
   
-  // Hide SVG Flame
+  // Hide SVG Flame cleanly without SMIL glitches
   const f = document.getElementById(`flame-${id}`);
-  if (f) f.style.display = 'none';
+  if (f) {
+    f.style.opacity = '0';
+    f.style.pointerEvents = 'none';
+  }
   
   // Calculate flame pixel position to spawn puff float emoji
   const cxVal = id === 1 ? 49 : (id === 2 ? 80 : 111);
@@ -1510,8 +1517,11 @@ function triggerVictory() {
   // Update header text in dynamic gradient
   const greeting = document.getElementById('main-greeting');
   greeting.innerHTML = "¡Deseo Concedido! 💖";
-  greeting.style.background = "linear-gradient(135deg, var(--gold), var(--teal), var(--pink))";
-  greeting.style.backgroundSize = "200%";
+  
+  // Re-trigger the popIn animation elegantly
+  greeting.style.animation = 'none';
+  greeting.offsetHeight; /* trigger reflow */
+  greeting.style.animation = 'shimmer 4s linear infinite, popIn 0.8s cubic-bezier(0.34,1.56,0.64,1) both';
   
   // Synthesize cheerful happy chimes
   const ctx = new (window.AudioContext || window.webkitAudioContext)();
