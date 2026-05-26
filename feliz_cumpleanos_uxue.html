@@ -989,17 +989,17 @@
           <rect x="107" y="28" width="8" height="28" rx="4" fill="#00e5cc"/>
           <!-- Flames (Interactive Clics) -->
           <g id="flame-group-1">
-            <ellipse id="flame-1" cx="49" cy="24" rx="6" ry="9" fill="#ffd700" opacity="0.9" onclick="extinguishFlame(1)" style="cursor: pointer;">
+            <ellipse id="flame-1" cx="49" cy="24" rx="6" ry="9" fill="#ffd700" opacity="0.9" onclick="extinguishFlame(1, event)" style="cursor: pointer;">
               <animate attributeName="ry" values="9;11;8;10;9" dur="0.8s" repeatCount="indefinite"/>
             </ellipse>
           </g>
           <g id="flame-group-2">
-            <ellipse id="flame-2" cx="80" cy="14" rx="6" ry="10" fill="#ffd700" opacity="0.9" onclick="extinguishFlame(2)" style="cursor: pointer;">
+            <ellipse id="flame-2" cx="80" cy="14" rx="6" ry="10" fill="#ffd700" opacity="0.9" onclick="extinguishFlame(2, event)" style="cursor: pointer;">
               <animate attributeName="ry" values="10;13;9;11;10" dur="0.7s" repeatCount="indefinite"/>
             </ellipse>
           </g>
           <g id="flame-group-3">
-            <ellipse id="flame-3" cx="111" cy="24" rx="6" ry="9" fill="#ffd700" opacity="0.9" onclick="extinguishFlame(3)" style="cursor: pointer;">
+            <ellipse id="flame-3" cx="111" cy="24" rx="6" ry="9" fill="#ffd700" opacity="0.9" onclick="extinguishFlame(3, event)" style="cursor: pointer;">
               <animate attributeName="ry" values="9;12;8;10;9" dur="0.9s" repeatCount="indefinite"/>
             </ellipse>
           </g>
@@ -1427,21 +1427,17 @@ function createPermanentStar() {
   starsEl.appendChild(s);
 }
 
-// ---------- Secret Developer Backdoor: 5 clicks on Footer Paragraph reveals wishes ----------
-let footerClicks = 0;
-const footerP = document.querySelector('.footer p');
-if (footerP) {
-  footerP.style.cursor = 'pointer';
-  footerP.addEventListener('click', () => {
-    footerClicks++;
-    if (footerClicks >= 5) {
-      footerClicks = 0;
-      revealSecretWishes();
-    }
-    // Reset clicks after 3 seconds of inactivity
-    setTimeout(() => footerClicks = 0, 3000);
-  });
-}
+// ---------- Secret Developer Backdoor: 5 clicks on Cake SVG reveals wishes ----------
+let cakeClicks = 0;
+document.querySelector('.cake-svg').addEventListener('click', () => {
+  cakeClicks++;
+  if (cakeClicks >= 5) {
+    cakeClicks = 0;
+    revealSecretWishes();
+  }
+  // Reset clicks after 3 seconds of inactivity
+  setTimeout(() => cakeClicks = 0, 3000);
+});
 
 function revealSecretWishes() {
   const wishes = JSON.parse(localStorage.getItem('uxue_wishes') || '[]');
@@ -1457,7 +1453,8 @@ function revealSecretWishes() {
 let candlesCount = 3;
 const blownCandles = { 1: false, 2: false, 3: false };
 
-function extinguishFlame(id) {
+function extinguishFlame(id, event) {
+  if (event) event.stopPropagation(); // Avoid triggering backdoor
   if (blownCandles[id]) return;
   
   blownCandles[id] = true;
