@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Feliz Cumpleaños Uxue! 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #ff6eb4;
+    --gold: #ffd700;
+    --purple: #c678f0;
+    --teal: #00e5cc;
+    --coral: #ff7b6b;
+    --bg: #0d0820;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: 'Quicksand', sans-serif;
+    position: relative;
+  }
+
+  /* Stars background */
+  .stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: twinkle var(--d) ease-in-out infinite alternate;
+    opacity: 0;
+  }
+  @keyframes twinkle {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* Confetti */
+  .confetti-wrap {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .confetti-piece {
+    position: absolute;
+    top: -20px;
+    width: 10px;
+    height: 14px;
+    border-radius: 2px;
+    animation: fall linear infinite;
+    opacity: 0.85;
+  }
+  @keyframes fall {
+    0%   { transform: translateY(-20px) rotate(0deg) translateX(0); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg) translateX(var(--drift)); opacity: 0.3; }
+  }
+
+  /* Main container */
+  .container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+    max-width: 700px;
+  }
+
+  /* Cake */
+  .cake-wrap {
+    margin-bottom: 1.5rem;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-12px); }
+  }
+  .cake-svg { filter: drop-shadow(0 0 30px rgba(255,110,180,0.6)); }
+
+  /* Title */
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2.8rem, 9vw, 6rem);
+    background: linear-gradient(135deg, var(--pink), var(--gold), var(--purple), var(--teal));
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite, popIn 0.8s cubic-bezier(0.34,1.56,0.64,1) both;
+    line-height: 1.15;
+    text-shadow: none;
+  }
+  @keyframes shimmer {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  @keyframes popIn {
+    0%   { opacity: 0; transform: scale(0.5) rotate(-5deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  }
+
+  .name {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(3.5rem, 12vw, 8rem);
+    color: var(--gold);
+    text-shadow: 0 0 40px rgba(255,215,0,0.7), 0 0 80px rgba(255,110,180,0.4);
+    animation: popIn 1s 0.3s cubic-bezier(0.34,1.56,0.64,1) both, pulse-glow 2.5s 1.3s ease-in-out infinite;
+    display: block;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { text-shadow: 0 0 40px rgba(255,215,0,0.7), 0 0 80px rgba(255,110,180,0.4); }
+    50%       { text-shadow: 0 0 60px rgba(255,215,0,1),   0 0 120px rgba(198,120,240,0.7); }
+  }
+
+  /* Subtitle */
+  .subtitle {
+    margin-top: 1rem;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    animation: fadeUp 1s 0.7s ease both;
+  }
+  @keyframes fadeUp {
+    0%   { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Candles row */
+  .candles {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.8rem 0;
+    animation: fadeUp 1s 0.9s ease both;
+  }
+  .candle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2.2rem;
+    transition: transform 0.2s;
+    filter: drop-shadow(0 0 8px var(--gold));
+  }
+  .candle-btn:hover { transform: scale(1.3) rotate(-5deg); }
+
+  /* Music button */
+  .music-btn {
+    margin-top: 1.5rem;
+    padding: 0.85rem 2.5rem;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    box-shadow: 0 0 30px rgba(255,110,180,0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: fadeUp 1s 1.1s ease both;
+    position: relative;
+    overflow: hidden;
+  }
+  .music-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--purple), var(--teal));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .music-btn:hover { transform: scale(1.06); box-shadow: 0 0 50px rgba(255,110,180,0.8); }
+  .music-btn:hover::before { opacity: 1; }
+  .music-btn span { position: relative; }
+  .music-btn.playing { background: linear-gradient(135deg, var(--teal), var(--purple)); }
+
+  /* Equalizer bars */
+  .eq {
+    display: inline-flex;
+    gap: 3px;
+    margin-left: 8px;
+    align-items: flex-end;
+    height: 16px;
+    vertical-align: middle;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .eq.active { opacity: 1; }
+  .eq-bar {
+    width: 4px;
+    background: white;
+    border-radius: 2px;
+    animation: eq-bounce 0.6s ease-in-out infinite alternate;
+  }
+  .eq-bar:nth-child(1) { animation-delay: 0s;    height: 8px; }
+  .eq-bar:nth-child(2) { animation-delay: 0.1s;  height: 14px; }
+  .eq-bar:nth-child(3) { animation-delay: 0.2s;  height: 6px; }
+  .eq-bar:nth-child(4) { animation-delay: 0.05s; height: 12px; }
+  @keyframes eq-bounce {
+    from { transform: scaleY(0.3); }
+    to   { transform: scaleY(1); }
+  }
+
+  /* Emoji burst */
+  .emoji-burst {
+    font-size: 2rem;
+    margin-top: 1.2rem;
+    animation: fadeUp 1s 1.3s ease both;
+    letter-spacing: 0.3em;
+    user-select: none;
+  }
+
+  /* Floating hearts / emojis */
+  .floater {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1.6rem;
+    animation: rise linear forwards;
+    z-index: 5;
+  }
+  @keyframes rise {
+    0%   { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-80vh) scale(0.5); opacity: 0; }
+  }
+
+  /* Glow ring */
+  .ring {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    border: 2px solid;
+    animation: expand linear forwards;
+  }
+  @keyframes expand {
+    from { opacity: 0.6; transform: scale(0.2); }
+    to   { opacity: 0; transform: scale(3); }
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .emoji-burst { letter-spacing: 0.15em; }
+    .music-btn { padding: 0.7rem 1.8rem; font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+<div class="confetti-wrap" id="confetti"></div>
+
+<div class="container">
+
+  <div class="cake-wrap">
+    <svg class="cake-svg" width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- Candles -->
+      <rect x="45" y="28" width="8" height="28" rx="4" fill="#ff6eb4"/>
+      <rect x="76" y="18" width="8" height="38" rx="4" fill="#c678f0"/>
+      <rect x="107" y="28" width="8" height="28" rx="4" fill="#00e5cc"/>
+      <!-- Flames -->
+      <ellipse cx="49" cy="24" rx="6" ry="9" fill="#ffd700" opacity="0.9">
+        <animate attributeName="ry" values="9;11;8;10;9" dur="0.8s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="80" cy="14" rx="6" ry="10" fill="#ffd700" opacity="0.9">
+        <animate attributeName="ry" values="10;13;9;11;10" dur="0.7s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="111" cy="24" rx="6" ry="9" fill="#ffd700" opacity="0.9">
+        <animate attributeName="ry" values="9;12;8;10;9" dur="0.9s" repeatCount="indefinite"/>
+      </ellipse>
+      <!-- Top tier -->
+      <rect x="30" y="56" width="100" height="34" rx="8" fill="#ff6eb4"/>
+      <rect x="30" y="56" width="100" height="14" rx="8" fill="#ff8ecb"/>
+      <!-- Deco top tier -->
+      <circle cx="55" cy="70" r="5" fill="white" opacity="0.7"/>
+      <circle cx="80" cy="70" r="5" fill="white" opacity="0.7"/>
+      <circle cx="105" cy="70" r="5" fill="white" opacity="0.7"/>
+      <!-- Bottom tier -->
+      <rect x="18" y="88" width="124" height="42" rx="8" fill="#c678f0"/>
+      <rect x="18" y="88" width="124" height="16" rx="8" fill="#d9a0f7"/>
+      <!-- Deco bottom tier -->
+      <circle cx="45" cy="105" r="6" fill="#ffd700" opacity="0.8"/>
+      <circle cx="70" cy="108" r="5" fill="#00e5cc" opacity="0.8"/>
+      <circle cx="95" cy="105" r="6" fill="#ff6eb4" opacity="0.8"/>
+      <circle cx="118" cy="108" r="5" fill="#ffd700" opacity="0.8"/>
+      <!-- Plate -->
+      <ellipse cx="80" cy="132" rx="72" ry="10" fill="#1a0f35"/>
+      <ellipse cx="80" cy="130" rx="70" ry="8" fill="#2a1650"/>
+    </svg>
+  </div>
+
+  <h1>¡Feliz Cumpleaños!</h1>
+  <span class="name">Uxue 🎉</span>
+
+  <p class="subtitle">Que este día sea tan especial como tú ✨</p>
+
+  <div class="candles" id="candles">
+    <button class="candle-btn" onclick="spawnFloater(this, '🎂')">🎂</button>
+    <button class="candle-btn" onclick="spawnFloater(this, '🌸')">🌸</button>
+    <button class="candle-btn" onclick="spawnFloater(this, '🎁')">🎁</button>
+    <button class="candle-btn" onclick="spawnFloater(this, '🦋')">🦋</button>
+    <button class="candle-btn" onclick="spawnFloater(this, '⭐')">⭐</button>
+  </div>
+
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+    <span>🎵 Escuchar música
+      <span class="eq" id="eq">
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+      </span>
+    </span>
+  </button>
+
+  <div class="emoji-burst">🎊 🎈 💖 🥳 🎈 🎊</div>
+</div>
+
+<script>
+// ---------- Stars ----------
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 120; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random() * 3 + 1;
+  s.style.cssText = `
+    left:${Math.random()*100}%;top:${Math.random()*100}%;
+    width:${size}px;height:${size}px;
+    --d:${(Math.random()*3+1).toFixed(1)}s;
+    animation-delay:${(Math.random()*4).toFixed(1)}s;
+  `;
+  starsEl.appendChild(s);
+}
+
+// ---------- Confetti ----------
+const colors = ['#ff6eb4','#ffd700','#c678f0','#00e5cc','#ff7b6b','#ffffff','#7de8ff'];
+const confWrap = document.getElementById('confetti');
+for (let i = 0; i < 60; i++) {
+  const c = document.createElement('div');
+  c.className = 'confetti-piece';
+  const drift = (Math.random()*200 - 100).toFixed(0) + 'px';
+  c.style.cssText = `
+    left:${Math.random()*100}%;
+    background:${colors[Math.floor(Math.random()*colors.length)]};
+    width:${Math.random()*10+6}px;height:${Math.random()*14+8}px;
+    border-radius:${Math.random()>0.5?'50%':'3px'};
+    --drift:${drift};
+    animation-duration:${(Math.random()*5+4).toFixed(1)}s;
+    animation-delay:${(Math.random()*6).toFixed(1)}s;
+    transform:rotate(${Math.random()*360}deg);
+  `;
+  confWrap.appendChild(c);
+}
+
+// ---------- Floaters ----------
+function spawnFloater(btn, emoji) {
+  const rect = btn.getBoundingClientRect();
+  const el = document.createElement('div');
+  el.className = 'floater';
+  el.textContent = emoji;
+  el.style.left = rect.left + rect.width/2 + 'px';
+  el.style.top  = rect.top + 'px';
+  el.style.animationDuration = (Math.random()*1.5+1.5).toFixed(1) + 's';
+  document.body.appendChild(el);
+  el.addEventListener('animationend', () => el.remove());
+  spawnRing(rect.left + rect.width/2, rect.top + rect.height/2);
+}
+function spawnRing(x, y) {
+  const r = document.createElement('div');
+  r.className = 'ring';
+  const c = colors[Math.floor(Math.random()*colors.length)];
+  const s = Math.random()*60+40;
+  r.style.cssText = `width:${s}px;height:${s}px;
+    left:${x-s/2}px;top:${y-s/2}px;border-color:${c};
+    animation-duration:${(Math.random()*0.5+0.5).toFixed(1)}s;`;
+  document.body.appendChild(r);
+  r.addEventListener('animationend', () => r.remove());
+}
+
+// ---------- Web Audio "Happy Birthday" ----------
+let audioCtx = null;
+let isPlaying = false;
+let stopFlag = false;
+
+const NOTE = {
+  C4:261.63, D4:293.66, E4:329.63, F4:349.23,
+  G4:392.00, A4:440.00, Bb4:466.16, B4:493.88,
+  C5:523.25, D5:587.33, E5:659.25, F5:698.46,
+  G5:783.99, A5:880.00,
+};
+
+// Happy Birthday melody [note, duration(beats)]
+const MELODY = [
+  ['G4',0.75],['G4',0.25],['A4',1],['G4',1],['C5',1],['B4',2],
+  ['G4',0.75],['G4',0.25],['A4',1],['G4',1],['D5',1],['C5',2],
+  ['G4',0.75],['G4',0.25],['G5',1],['E5',1],['C5',1],['B4',1],['A4',2],
+  ['F5',0.75],['F5',0.25],['E5',1],['C5',1],['D5',1],['C5',2],
+];
+
+const CHORDS = [
+  [['C4','E4','G4'],3], [['G4','B4','D5'],3],
+  [['G4','B4','D5'],3], [['C4','E4','G4'],3],
+  [['C4','E4','G4'],4], [['F4','A4','C5'],2],
+  [['C4','E4','G4'],2], [['G4','B4','D5'],4],
+  [['C4','E4','G4'],4],
+];
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function playNote(ctx, freq, start, duration, vol=0.35, type='sine') {
+  const osc  = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.connect(gain); gain.connect(ctx.destination);
+  osc.type = type;
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(0, start);
+  gain.gain.linearRampToValueAtTime(vol, start + 0.02);
+  gain.gain.setValueAtTime(vol, start + duration - 0.05);
+  gain.gain.linearRampToValueAtTime(0, start + duration);
+  osc.start(start);
+  osc.stop(start + duration);
+}
+
+async function playBirthday(ctx) {
+  const BPM = 108;
+  const beat = 60 / BPM;
+  let t = ctx.currentTime + 0.1;
+  let ci = 0;
+  let cBeats = 0;
+
+  for (let i = 0; i < MELODY.length && !stopFlag; i++) {
+    const [noteKey, beats] = MELODY[i];
+    const dur = beats * beat;
+    const freq = NOTE[noteKey];
+
+    // Melody (sine + triangle blend)
+    playNote(ctx, freq, t, dur, 0.32, 'sine');
+    playNote(ctx, freq, t, dur, 0.10, 'triangle');
+
+    // Accompaniment chords (piano-like with sawtooth)
+    while (cBeats < (i > 0 ? MELODY.slice(0,i).reduce((a,[,b])=>a+b,0) : 0) + beats) {
+      if (ci < CHORDS.length) {
+        const [chordNotes, chordBeats] = CHORDS[ci];
+        const ct = ctx.currentTime + 0.1 + cBeats * beat;
+        chordNotes.forEach(n => {
+          playNote(ctx, NOTE[n], ct, chordBeats * beat * 0.8, 0.06, 'sawtooth');
+        });
+        cBeats += chordBeats;
+        ci++;
+      } else { break; }
+    }
+
+    await sleep(dur * 1000);
+    if (stopFlag) break;
+    t += dur;
+  }
+}
+
+async function loopMusic() {
+  while (!stopFlag) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    await playBirthday(audioCtx);
+    if (!stopFlag) await sleep(800);
+    audioCtx.close();
+  }
+}
+
+function toggleMusic() {
+  const btn = document.getElementById('musicBtn');
+  const eq  = document.getElementById('eq');
+  if (!isPlaying) {
+    isPlaying = true;
+    stopFlag  = false;
+    btn.innerHTML = `<span>🎵 Pausar música <span class="eq active" id="eq">
+      <span class="eq-bar"></span><span class="eq-bar"></span>
+      <span class="eq-bar"></span><span class="eq-bar"></span>
+    </span></span>`;
+    btn.classList.add('playing');
+    loopMusic();
+  } else {
+    isPlaying = false;
+    stopFlag  = true;
+    if (audioCtx) audioCtx.close();
+    btn.innerHTML = `<span>🎵 Escuchar música <span class="eq" id="eq">
+      <span class="eq-bar"></span><span class="eq-bar"></span>
+      <span class="eq-bar"></span><span class="eq-bar"></span>
+    </span></span>`;
+    btn.classList.remove('playing');
+  }
+}
+</script>
+</body>
+</html>
