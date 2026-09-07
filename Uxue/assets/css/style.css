@@ -1,0 +1,198 @@
+﻿/* ═══════════════════════════════════════════════════════════
+   UXUE GOMEZ — Landing Page Styles
+   1. Variables & Reset
+   2. Tipografia / Utilidades
+   3. Foto-surfaces
+   4. Nav
+   5. Hero
+   6. Movil hero (phone tilt)
+   7. Lo ultimo (ig-phone-layout)
+   8. About band
+   9. Marcas
+   10. Portfolio grid
+   11. Contact
+   12. Footer
+   13. Animaciones
+   14. Responsive
+═══════════════════════════════════════════════════════════ */
+
+:root {
+  --cream:       #FDF8F5;
+  --cream-soft:  #F7F0EC;
+  --ink:         #3B3540;
+  --blush:       #F2B8C6;
+  --lavender:    #C9BFE8;
+  --mint:        #B8DED1;
+  --peach:       #F6D3B0;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--ink); font-family: "DM Sans", sans-serif; line-height: 1.5; overflow-x: hidden; }
+h1, h2, h3 { font-family: "Fraunces", serif; font-weight: 500; letter-spacing: -0.01em; }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+/* ── Foto-surfaces ── */
+.photo-surface { position: relative; background-size: cover; background-position: center; }
+.photo-surface::after { content: ""; position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, rgba(59,53,64,0.04) 0px, transparent 1px, transparent 2px); mix-blend-mode: multiply; opacity: 0.4; pointer-events: none; }
+.photo-tint { position: absolute; inset: 0; }
+
+.photo-hero    { background-image: linear-gradient(180deg,rgba(0,0,0,0.05),rgba(0,0,0,0.25)), url("../img/hero.jpg"); background-position: center 20%; }
+.photo-about   { background-image: linear-gradient(90deg,rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url("../img/cafe-barcelona.jpg"); background-position: center 30%; }
+.photo-work    { background-image: linear-gradient(0deg,rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url("../img/collab-sudadera.jpg"); background-position: center 25%; }
+.photo-contact { background-image: linear-gradient(0deg,rgba(0,0,0,0.05),rgba(0,0,0,0.05)), url("../img/amigas-terraza.jpg"); background-position: center 65%; }
+
+/* ── Nav ── */
+nav { display: flex; justify-content: space-between; align-items: center; padding: 26px 32px; max-width: 1180px; margin: 0 auto; position: relative; z-index: 5; }
+.logo { font-family: "Fraunces", serif; font-size: 1.3rem; font-weight: 600; }
+.navlinks { display: flex; gap: 32px; font-size: 0.95rem; }
+.navlinks a { opacity: 0.85; transition: opacity 0.2s; }
+.navlinks a:hover { opacity: 1; }
+
+/* ── Hero ── */
+.hero { position: relative; min-height: 640px; display: flex; flex-direction: column; color: #fff; overflow: hidden; }
+.hero .photo-tint { background: linear-gradient(180deg,rgba(59,53,64,0.15) 0%,rgba(59,53,64,0.05) 35%,rgba(59,53,64,0.55) 100%); }
+.hero nav .navlinks a, .hero .logo { color: #fff; }
+.hero-body { position: relative; z-index: 2; flex: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 20px; align-items: end; max-width: 1180px; margin: 0 auto; width: 100%; padding: 0 32px 56px; }
+.hero-copy { opacity: 0; animation: riseIn 0.9s 0.1s cubic-bezier(.2,.7,.3,1) forwards; padding-bottom: 10px; }
+.hero-copy .kicker { color: #FBDDE4; font-weight: 700; font-size: 0.95rem; margin-bottom: 14px; }
+.hero h1 { font-size: clamp(2.5rem,4.8vw,3.7rem); line-height: 1.03; text-shadow: 0 2px 24px rgba(0,0,0,0.25); }
+.hero h1 em { font-style: italic; color: #FBDDE4; }
+.hero p { margin-top: 20px; font-size: 1.1rem; max-width: 40ch; opacity: 0.92; }
+.hero-stat { margin-top: 14px; font-size: 0.85rem; opacity: 0.85; font-weight: 700; }
+.hero-actions { margin-top: 22px; display: flex; gap: 16px; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 14px 26px; border-radius: 100px; font-weight: 700; font-size: 0.95rem; transition: transform 0.2s ease, background 0.2s ease; }
+.btn-primary { background: #fff; color: var(--ink); }
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-ghost { border: 1.5px solid #fff; color: #fff; }
+.btn-ghost:hover { background: #fff; color: var(--ink); }
+
+/* ── Phone tilt (hero) ── */
+.phone-tilt-wrap { justify-self: end; perspective: 1200px; width: 100%; max-width: 280px; opacity: 0; animation: riseIn 0.9s 0.3s cubic-bezier(.2,.7,.3,1) forwards; }
+.phone-frame { transform-style: preserve-3d; transition: transform 0.15s ease-out; background: var(--ink); border-radius: 36px; padding: 12px; box-shadow: 0 40px 70px -25px rgba(0,0,0,0.45); position: relative; }
+.phone-notch { position: absolute; top: 22px; left: 50%; transform: translateX(-50%); width: 70px; height: 18px; background: var(--ink); border-radius: 12px; z-index: 3; }
+.phone-screen { position: relative; border-radius: 26px; overflow-y: auto; overflow-x: hidden; aspect-ratio: 9/18.5; scroll-snap-type: y mandatory; -webkit-overflow-scrolling: touch; }
+.phone-screen::-webkit-scrollbar { display: none; }
+.reel-panel { scroll-snap-align: start; height: 100%; position: relative; display: flex; align-items: flex-end; padding: 20px 16px; color: #fff; }
+.reel-panel .caption b { display: block; font-family: "Fraunces", serif; font-size: 1rem; }
+.reel-panel .caption span { font-size: 0.78rem; opacity: 0.9; }
+.reel-panel .actions { position: absolute; right: 12px; bottom: 26px; display: flex; flex-direction: column; gap: 16px; align-items: center; font-size: 1.15rem; }
+.reel-panel .actions .n { font-size: 0.65rem; opacity: 0.9; margin-top: 2px; }
+.rp1 { background: linear-gradient(160deg,rgba(0,0,0,0.2),rgba(0,0,0,0.45)), url("../img/rutina-manana.jpg") center/cover; }
+.rp2 { background: linear-gradient(160deg,rgba(0,0,0,0.2),rgba(0,0,0,0.45)), url("../img/collab-sudadera.jpg") center/cover; }
+.rp3 { background: linear-gradient(160deg,rgba(0,0,0,0.2),rgba(0,0,0,0.45)), url("../img/cafe-barcelona.jpg") center/cover; }
+.rp4 { background: linear-gradient(160deg,rgba(0,0,0,0.2),rgba(0,0,0,0.45)), url("../img/unboxing.jpg") center/cover; }
+.rp5 { background: linear-gradient(160deg,rgba(0,0,0,0.2),rgba(0,0,0,0.45)), url("../img/amigas-terraza.jpg") center/cover; }
+.scroll-track { position: absolute; right: 5px; top: 16%; bottom: 16%; width: 3px; border-radius: 3px; background: rgba(255,255,255,0.3); z-index: 2; }
+.scroll-thumb { position: absolute; left: 0; width: 100%; border-radius: 3px; background: #fff; height: 20%; transition: top 0.05s linear; }
+.phone-hint { text-align: center; font-size: 0.78rem; opacity: 0.85; margin-top: 12px; color: #fff; }
+
+/* ── Lo ultimo — IG phone layout ── */
+.reels { padding: 64px 0 70px; }
+.reels-head { max-width: 1180px; margin: 0 auto; padding: 0 32px 32px; display: flex; justify-content: space-between; align-items: flex-end; }
+.reels-head p { opacity: 0.55; font-size: 0.9rem; }
+.reels-head .sync { display: inline-flex; align-items: center; gap: 6px; }
+.sync-dot { width: 7px; height: 7px; border-radius: 50%; background: #8FBFA8; display: inline-block; animation: pulse 2s infinite; }
+
+.ig-phone-layout { max-width: 1000px; margin: 0 auto; padding: 0 32px 16px; display: flex; align-items: flex-start; gap: 52px; flex-wrap: wrap; justify-content: center; }
+.ig-phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.ig-phone-device { position: relative; width: 268px; height: 536px; background: #16161e; border-radius: 46px; border: 7px solid #26262e; box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 32px 80px rgba(0,0,0,0.5), inset 0 0 30px rgba(255,255,255,0.02); overflow: hidden; flex-shrink: 0; }
+.ig-phone-notch { position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 88px; height: 22px; background: #111; border-radius: 12px; z-index: 10; }
+.ig-phone-screen { position: absolute; inset: 0; border-radius: 40px; overflow: hidden; display: flex; flex-direction: column; }
+.ig-side-btn { position: absolute; background: #26262e; border-radius: 3px; }
+.ig-btn-vol-up  { left: -10px; top:  90px; width: 5px; height: 30px; }
+.ig-btn-vol-dn  { left: -10px; top: 130px; width: 5px; height: 30px; }
+.ig-btn-power   { right: -10px; top: 115px; width: 5px; height: 44px; }
+
+.ig-embed-slot { display: none; width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; }
+.ig-embed-slot.active { display: flex; align-items: stretch; }
+.ig-embed-slot .instagram-media { width: 100% !important; min-width: 100% !important; border-radius: 0 !important; border: none !important; margin: 0 !important; }
+
+.ig-embed-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(155deg,#1a1a2e,#2d1b4e); padding: 24px; }
+.ig-placeholder-inner { text-align: center; color: #fff; }
+.ig-ph-icon { font-size: 2.4rem; margin-bottom: 12px; opacity: 0.55; }
+.ig-ph-label { font-family: "Fraunces", serif; font-size: 1rem; margin-bottom: 6px; }
+.ig-ph-sub { font-size: 0.72rem; opacity: 0.5; margin-bottom: 14px; }
+.ig-ph-code { display: block; font-size: 0.58rem; opacity: 0.4; word-break: break-all; line-height: 1.6; background: rgba(255,255,255,0.07); border-radius: 8px; padding: 8px; text-align: left; }
+
+.ig-dots { display: flex; gap: 8px; justify-content: center; }
+.ig-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(59,53,64,0.22); cursor: pointer; transition: background 0.25s, transform 0.25s; }
+.ig-dot.active { background: var(--ink); transform: scale(1.3); }
+
+.ig-thumbs { display: flex; flex-direction: column; gap: 14px; flex: 1; max-width: 360px; min-width: 220px; }
+.ig-thumb { border-radius: 14px; height: 106px; position: relative; cursor: pointer; overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease; flex-shrink: 0; }
+.ig-thumb:hover, .ig-thumb.active { transform: scale(1.025); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+.ig-thumb.active::after { content: ""; position: absolute; inset: 0; border-radius: 14px; border: 2.5px solid var(--blush); pointer-events: none; }
+.ig-thumb-label { position: absolute; bottom: 10px; left: 12px; right: 12px; color: #fff; font-size: 0.8rem; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.55); }
+.ig-thumbs-more { display: inline-flex; align-items: center; justify-content: center; margin-top: 4px; padding: 11px 20px; background: var(--ink); color: var(--cream); border-radius: 50px; font-size: 0.82rem; font-weight: 700; transition: background 0.2s, transform 0.2s; text-align: center; }
+.ig-thumbs-more:hover { background: #5a4f65; transform: translateY(-2px); }
+
+/* ── About band ── */
+.aboutband { position: relative; min-height: 420px; display: flex; align-items: center; color: #fff; overflow: hidden; }
+.aboutband .photo-tint { background: linear-gradient(90deg,rgba(59,53,64,0.55) 0%,rgba(59,53,64,0.15) 55%,transparent 100%); }
+.aboutband-copy { position: relative; z-index: 2; max-width: 520px; padding: 60px 32px; }
+.aboutband-copy .kicker { color: #E8F0EA; font-weight: 700; font-size: 0.9rem; margin-bottom: 12px; opacity: 0.9; }
+.aboutband-copy h2 { font-size: 2.1rem; margin-bottom: 16px; }
+.aboutband-copy p { opacity: 0.92; max-width: 42ch; }
+
+/* ── Marcas ── */
+.marcas { background: var(--cream-soft); padding: 56px 32px; }
+.marcas .wrap { text-align: center; }
+.marcas p.label { opacity: 0.55; margin-bottom: 24px; }
+.marca-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+.marca-chip { padding: 10px 22px; border: 1.5px solid rgba(59,53,64,0.2); border-radius: 50px; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.02em; }
+
+/* ── Portfolio ── */
+.work-header { position: relative; min-height: 320px; display: flex; align-items: center; color: #fff; overflow: hidden; }
+.work-header .photo-tint { background: linear-gradient(0deg,rgba(59,53,64,0.5),rgba(59,53,64,0.2)); }
+.work-header-copy { position: relative; z-index: 2; max-width: 600px; padding: 60px 32px; }
+.work-header-copy h2 { font-size: 2.1rem; margin-bottom: 12px; }
+.work-header-copy p { opacity: 0.88; }
+.portfolio { background: var(--cream-soft); padding: 0 32px 80px; }
+.pgrid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(6,1fr); gap: 16px; padding-top: 32px; }
+.pitem { border-radius: 16px; position: relative; overflow: hidden; cursor: pointer; color: #fff; transform-style: preserve-3d; transition: transform 0.15s ease-out; min-height: 220px; }
+.pitem::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,0.4),transparent 55%); opacity: 0; transition: opacity 0.2s ease; }
+.pitem:hover::before { opacity: 1; }
+.pitem .info { position: absolute; inset: auto 0 0 0; padding: 18px; background: linear-gradient(0deg,rgba(0,0,0,0.45),transparent 70%); opacity: 0; transform: translateY(8px); transition: all 0.25s ease; }
+.pitem:hover .info { opacity: 1; transform: translateY(0); }
+.pitem .info b { display: block; font-family: "Fraunces", serif; font-size: 1.05rem; }
+.pitem .info span { font-size: 0.8rem; opacity: 0.9; }
+.p1 { grid-column: span 3; grid-row: span 2; background: linear-gradient(rgba(0,0,0,0.08),rgba(0,0,0,0.28)), url("../img/collab-sudadera.jpg") center/cover no-repeat; }
+.p2 { grid-column: span 3; grid-row: span 1; background: linear-gradient(rgba(0,0,0,0.08),rgba(0,0,0,0.28)), url("../img/unboxing.jpg") center/cover no-repeat; }
+.p3 { grid-column: span 3; grid-row: span 1; background: linear-gradient(rgba(0,0,0,0.08),rgba(0,0,0,0.28)), url("../img/cafe-barcelona.jpg") center/cover no-repeat; }
+.p4 { grid-column: span 2; grid-row: span 1; background: linear-gradient(rgba(0,0,0,0.08),rgba(0,0,0,0.28)), url("../img/amigas-terraza.jpg") center/cover no-repeat; }
+.p5 { grid-column: span 2; grid-row: span 1; background: linear-gradient(rgba(0,0,0,0.08),rgba(0,0,0,0.28)), url("../img/street-steps.jpg") center/cover no-repeat; }
+.p6 { grid-column: span 2; grid-row: span 1; background: linear-gradient(rgba(0,0,0,0.08),rgba(0,0,0,0.28)), url("../img/rutina-manana.jpg") center/cover no-repeat; }
+
+/* ── Contact ── */
+.contact { position: relative; min-height: 500px; display: flex; align-items: center; color: #fff; text-align: center; overflow: hidden; }
+.contact .photo-tint { background: linear-gradient(0deg,rgba(59,53,64,0.55),rgba(59,53,64,0.3)); }
+.contact .wrap { position: relative; z-index: 2; }
+.contact h2 { font-size: 2.4rem; margin-bottom: 16px; }
+.contact p { max-width: 50ch; margin: 0 auto 28px; opacity: 0.92; font-size: 1.05rem; }
+.contact-handles { margin-top: 20px; font-size: 0.85rem; opacity: 0.7; font-weight: 700; }
+
+/* ── Footer ── */
+footer { background: var(--ink); color: var(--cream); text-align: center; padding: 24px 32px; font-size: 0.85rem; opacity: 0.9; }
+
+/* ── Animations ── */
+@keyframes riseIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse  { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .hero-body { grid-template-columns: 1fr; }
+  .phone-tilt-wrap { display: none; }
+  .pgrid { grid-template-columns: repeat(2,1fr); }
+  .p1,.p2,.p3 { grid-column: span 2; }
+  .p4,.p5,.p6 { grid-column: span 1; }
+  .reels-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+}
+@media (max-width: 640px) {
+  .ig-phone-layout { flex-direction: column; align-items: center; }
+  .ig-thumbs { flex-direction: row; flex-wrap: wrap; max-width: 100%; }
+  .ig-thumb { flex: 1 1 calc(50% - 7px); height: 90px; }
+  nav { padding: 20px; }
+  .navlinks { gap: 18px; font-size: 0.85rem; }
+  .hero h1 { font-size: 2.1rem; }
+}
