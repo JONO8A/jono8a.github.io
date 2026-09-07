@@ -1,4 +1,4 @@
-﻿/* ═══════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════
    UXUE GOMEZ — Landing Page Styles
    1. Variables & Reset
    2. Tipografia / Utilidades
@@ -54,6 +54,11 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .hero .photo-tint { background: linear-gradient(180deg,rgba(59,53,64,0.15) 0%,rgba(59,53,64,0.05) 35%,rgba(59,53,64,0.55) 100%); }
 .hero nav .navlinks a, .hero .logo { color: #fff; }
 .hero-body { position: relative; z-index: 2; flex: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 20px; align-items: end; max-width: 1180px; margin: 0 auto; width: 100%; padding: 0 32px 56px; }
+.hero-body--solo { grid-template-columns: 1fr; max-width: 720px; align-items: center; justify-items: center; text-align: center; margin: 0 auto; padding-bottom: 72px; }
+.hero-body--solo .hero-copy { padding-bottom: 0; }
+.hero-body--solo .hero-copy p { margin-left: auto; margin-right: auto; }
+.hero-body--solo .hero-actions { justify-content: center; }
+
 .hero-copy { opacity: 0; animation: riseIn 0.9s 0.1s cubic-bezier(.2,.7,.3,1) forwards; padding-bottom: 10px; }
 .hero-copy .kicker { color: #FBDDE4; font-weight: 700; font-size: 0.95rem; margin-bottom: 14px; }
 .hero h1 { font-size: clamp(2.5rem,4.8vw,3.7rem); line-height: 1.03; text-shadow: 0 2px 24px rgba(0,0,0,0.25); }
@@ -67,8 +72,9 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .btn-ghost { border: 1.5px solid #fff; color: #fff; }
 .btn-ghost:hover { background: #fff; color: var(--ink); }
 
-/* ── Phone tilt (hero) ── */
+/* ── Phone tilt (hero & lo ultimo) ── */
 .phone-tilt-wrap { justify-self: end; perspective: 1200px; width: 100%; max-width: 280px; opacity: 0; animation: riseIn 0.9s 0.3s cubic-bezier(.2,.7,.3,1) forwards; }
+.lu-phone-col .phone-tilt-wrap { opacity: 1; animation: none; max-width: 300px; justify-self: center; }
 .phone-frame { transform-style: preserve-3d; transition: transform 0.15s ease-out; background: var(--ink); border-radius: 36px; padding: 12px; box-shadow: 0 40px 70px -25px rgba(0,0,0,0.45); position: relative; }
 .phone-notch { position: absolute; top: 22px; left: 50%; transform: translateX(-50%); width: 70px; height: 18px; background: var(--ink); border-radius: 12px; z-index: 3; }
 .phone-screen { position: relative; border-radius: 26px; overflow-y: auto; overflow-x: hidden; aspect-ratio: 9/18.5; scroll-snap-type: y mandatory; -webkit-overflow-scrolling: touch; }
@@ -196,3 +202,57 @@ footer { background: var(--ink); color: var(--cream); text-align: center; paddin
   .navlinks { gap: 18px; font-size: 0.85rem; }
   .hero h1 { font-size: 2.1rem; }
 }
+
+/* == Lo ultimo new layout == */
+.lo-ultimo { padding: 80px 0 90px; background: var(--cream); overflow: hidden; }
+.lo-ultimo-head { max-width: 1180px; margin: 0 auto; padding: 0 32px 48px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; }
+.lo-ultimo-head h2 { font-size: 2.2rem; }
+.lo-ultimo-head .sync { display: inline-flex; align-items: center; gap: 6px; }
+.btn-outline-dark { padding: 10px 22px; border: 1.5px solid var(--ink); border-radius: 50px; font-size: 0.85rem; font-weight: 700; transition: background 0.2s, color 0.2s; white-space: nowrap; color: var(--ink); text-decoration: none; }
+.btn-outline-dark:hover { background: var(--ink); color: var(--cream); }
+.lo-ultimo-layout { max-width: 1180px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 300px 1fr; gap: 52px; align-items: start; }
+.lu-phone-col { display: flex; flex-direction: column; align-items: center; gap: 16px; position: sticky; top: 24px; }
+.lu-phone-col .phone-frame { width: 100%; }
+.lu-content-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+.lu-card { border-radius: 18px; overflow: hidden; background: var(--cream-soft); border: 1px solid rgba(59,53,64,0.08); transition: transform 0.25s ease, box-shadow 0.25s ease; text-decoration: none; color: var(--ink); display: flex; flex-direction: column; }
+.lu-card:hover { transform: translateY(-5px); box-shadow: 0 18px 40px rgba(0,0,0,0.12); }
+.lu-card-photo { height: 200px; background-size: cover; background-position: center; position: relative; flex-shrink: 0; }
+.lu-card-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg,rgba(0,0,0,0.5) 0%,transparent 55%); }
+.lu-card-photo-label { position: absolute; bottom: 14px; left: 14px; right: 14px; color: #fff; z-index: 1; font-weight: 700; font-size: 1rem; text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+.lu-card-meta { padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; font-size: 0.78rem; opacity: 0.7; }
+.lu-card-platform { font-weight: 700; font-size: 0.72rem; padding: 3px 10px; border-radius: 20px; background: rgba(59,53,64,0.08); }
+.lu-card-wide { grid-column: span 2; }
+.lu-yt-placeholder { height: 160px; background: #111; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; color: #fff; flex-shrink: 0; }
+.lu-yt-play { width: 52px; height: 52px; background: #FF0000; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; box-shadow: 0 4px 20px rgba(255,0,0,0.45); transition: transform 0.2s; }
+.lu-card:hover .lu-yt-play { transform: scale(1.1); }
+.lu-yt-label { font-size: 0.75rem; opacity: 0.55; }
+.lu-tt-placeholder { height: 200px; background: linear-gradient(135deg,#010101,#1a0a1e); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; color: #fff; flex-shrink: 0; }
+/* about pills */
+.aboutband-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+.aboutband-pills span { padding: 6px 16px; border: 1.5px solid rgba(255,255,255,0.45); border-radius: 50px; font-size: 0.82rem; font-weight: 600; }
+/* colaboraciones */
+.colaboraciones { padding: 88px 0 100px; background: var(--cream-soft); }
+.colaboraciones-head { padding-bottom: 48px; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.colaboraciones-head h2 { font-size: 2.2rem; }
+.colaboraciones-head p { max-width: 44ch; opacity: 0.65; font-size: 0.95rem; }
+.btn-dark { display: inline-block; padding: 12px 24px; background: var(--ink); color: var(--cream); border-radius: 50px; font-size: 0.85rem; font-weight: 700; transition: background 0.2s, transform 0.2s; white-space: nowrap; text-decoration: none; }
+.btn-dark:hover { background: #5a4f65; transform: translateY(-2px); }
+.colab-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.colab-card { background: var(--cream); border-radius: 20px; overflow: hidden; border: 1px solid rgba(59,53,64,0.07); transition: transform 0.25s ease, box-shadow 0.25s ease; display: flex; flex-direction: column; }
+.colab-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+.colab-img { height: 240px; background-size: cover; background-position: center; position: relative; }
+.colab-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg,rgba(0,0,0,0.3),transparent 60%); }
+.colab-badge { position: absolute; top: 14px; left: 14px; background: rgba(255,255,255,0.92); color: var(--ink); font-size: 0.72rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.04em; text-transform: uppercase; z-index: 1; backdrop-filter: blur(4px); }
+.colab-body { padding: 22px 22px 26px; flex: 1; display: flex; flex-direction: column; }
+.colab-brand { font-family: "Fraunces",serif; font-size: 1.25rem; font-weight: 500; margin-bottom: 6px; }
+.colab-type { font-size: 0.78rem; font-weight: 700; color: var(--blush); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+.colab-desc { font-size: 0.88rem; opacity: 0.68; line-height: 1.65; flex: 1; margin-bottom: 18px; }
+.colab-stats { display: flex; gap: 18px; padding-top: 16px; border-top: 1px solid rgba(59,53,64,0.08); }
+.colab-stat { display: flex; flex-direction: column; gap: 2px; }
+.colab-stat strong { font-family: "Fraunces",serif; font-size: 1.3rem; font-weight: 600; }
+.colab-stat span { font-size: 0.7rem; opacity: 0.55; text-transform: uppercase; letter-spacing: 0.05em; }
+.colab-card-featured { grid-column: span 2; }
+.colab-card-featured .colab-img { height: 300px; }
+@media (max-width: 1024px) { .lo-ultimo-layout { grid-template-columns: 260px 1fr; gap: 36px; } .colab-grid { grid-template-columns: repeat(2,1fr); } .colab-card-featured { grid-column: span 2; } }
+@media (max-width: 860px) { .lo-ultimo-layout { grid-template-columns: 1fr; } .lu-phone-col { position: static; } .colab-grid { grid-template-columns: 1fr; } .colab-card-featured { grid-column: span 1; } .colab-card-featured .colab-img { height: 240px; } }
+@media (max-width: 640px) { .lo-ultimo-layout, .colab-grid { padding: 0 20px; } .lu-content-grid { grid-template-columns: 1fr; } .lu-card-wide { grid-column: span 1; } }

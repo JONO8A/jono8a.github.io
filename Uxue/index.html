@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -24,7 +24,7 @@
     </div>
   </nav>
 
-  <div class="hero-body">
+  <div class="hero-body hero-body--solo">
     <div class="hero-copy">
       <p class="kicker">Creadora de contenido · Vitoria-Gasteiz</p>
       <h1>Contenido que<br><em>conecta de verdad</em></h1>
@@ -32,175 +32,166 @@
       <p class="hero-stat">+180K seguidores · Instagram &amp; TikTok</p>
       <div class="hero-actions">
         <a href="#contacto" class="btn btn-primary">Hablemos →</a>
-        <a href="#trabajos" class="btn btn-ghost">Ver trabajos</a>
+        <a href="#reels" class="btn btn-ghost">Ver lo último ↓</a>
       </div>
-    </div>
-
-    <!-- Movil con scroll de reels -->
-    <div class="phone-tilt-wrap" id="phoneTilt">
-      <div class="phone-frame" id="phoneFrame">
-        <div class="phone-notch"></div>
-        <div class="phone-screen" id="phoneScreen">
-          <div class="scroll-track"><div class="scroll-thumb" id="scrollThumb"></div></div>
-
-          <div class="reel-panel rp1">
-            <div class="caption"><b>Rutina de manana ☕</b><span>128K reproducciones</span></div>
-            <div class="actions">❤️<span class="n">12K</span>💬<span class="n">340</span>↗️<span class="n">89</span></div>
-          </div>
-          <div class="reel-panel rp2">
-            <div class="caption"><b>Colab · Baskonik Style</b><span>84K reproducciones</span></div>
-            <div class="actions">❤️<span class="n">9.1K</span>💬<span class="n">210</span>↗️<span class="n">150</span></div>
-          </div>
-          <div class="reel-panel rp3">
-            <div class="caption"><b>Un dia conmigo</b><span>203K reproducciones</span></div>
-            <div class="actions">❤️<span class="n">21K</span>💬<span class="n">560</span>↗️<span class="n">300</span></div>
-          </div>
-          <div class="reel-panel rp4">
-            <div class="caption"><b>Unboxing · Frikimon</b><span>96K reproducciones</span></div>
-            <div class="actions">❤️<span class="n">15K</span>💬<span class="n">402</span>↗️<span class="n">120</span></div>
-          </div>
-          <div class="reel-panel rp5">
-            <div class="caption"><b>Tarde con amigas</b><span>67K reproducciones</span></div>
-            <div class="actions">❤️<span class="n">7.4K</span>💬<span class="n">180</span>↗️<span class="n">64</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="phone-hint">desliza dentro del movil ↕</div>
     </div>
   </div>
 </section>
 
 
 <!-- ══ LO ÚLTIMO ════════════════════════════════════════════════════ -->
-<section class="reels" id="reels">
-  <div class="reels-head">
-    <h2>Lo ultimo</h2>
-    <p class="sync">
-      <span class="sync-dot"></span>
-      en directo desde Instagram ·
-      <a href="https://www.instagram.com/uxuegomeez/" target="_blank" rel="noopener"
-         style="color:inherit;text-decoration:underline;text-underline-offset:3px">@uxuegomeez</a>
-    </p>
+<section class="lo-ultimo" id="reels">
+  <div class="lo-ultimo-head wrap">
+    <div>
+      <h2>Lo último</h2>
+      <p class="sync"><span class="sync-dot"></span> en directo desde sus redes sociales</p>
+    </div>
+    <a href="https://www.instagram.com/uxuegomeez/" target="_blank" rel="noopener" class="btn-outline-dark">Ver Instagram @uxuegomeez ↗</a>
   </div>
 
-  <div class="ig-phone-layout">
+  <div class="lo-ultimo-layout">
 
-    <!-- ── MOVIL CENTRAL ── -->
-    <div class="ig-phone-wrap">
-      <div class="ig-phone-device">
-        <div class="ig-phone-notch"></div>
-        <div class="ig-phone-screen" id="igScreen">
+    <!-- Móvil 3D (el del hero, con tilt y scroll interno) -->
+    <div class="lu-phone-col">
+      <div class="phone-tilt-wrap" id="phoneTilt">
+        <div class="phone-frame" id="phoneFrame">
+          <div class="phone-notch"></div>
+          <div class="phone-screen" id="phoneScreen">
+            <div class="scroll-track"><div class="scroll-thumb" id="scrollThumb"></div></div>
 
-          <!--
-          ╔══════════════════════════════════════════════════════════╗
-          ║  INSTRUCCIONES PARA CONECTAR TUS REELS REALES           ║
-          ║                                                          ║
-          ║  1. Ve a instagram.com/uxuegomeez en el PC               ║
-          ║  2. Abre el reel que quieras mostrar                     ║
-          ║  3. Clic en "..." → "Insertar"                           ║
-          ║  4. Copia el <blockquote> que te dan                     ║
-          ║  5. Pega DENTRO del <div class="ig-embed-slot"> correcto ║
-          ║     (borra o deja el ig-embed-placeholder que hay ahora) ║
-          ╚══════════════════════════════════════════════════════════╝
-          -->
-
-          <!-- SLOT 0 — Reel 1 -->
-          <div class="ig-embed-slot active" id="igSlot0">
-            <div class="ig-embed-placeholder">
-              <div class="ig-placeholder-inner">
-                <div class="ig-ph-icon">▶</div>
-                <p class="ig-ph-label">Rutina de manana ☕</p>
-                <p class="ig-ph-sub">Pega aqui el embed de Instagram</p>
-                <code class="ig-ph-code">&lt;blockquote class="instagram-media"
-  data-instgrm-permalink="https://www.instagram.com/reel/CODIGO_REEL_1/"
-  ...&gt;&lt;/blockquote&gt;</code>
+            <!-- Panel Reel 1 -->
+            <div class="reel-panel rp1">
+              <div class="caption">
+                <b>Rutina de mañana ☕</b>
+                <span>@uxuegomeez</span>
+              </div>
+              <div class="actions">
+                <div>❤️<div class="n">14.2K</div></div>
+                <div>💬<div class="n">312</div></div>
+                <div>✈️<div class="n">1.8K</div></div>
               </div>
             </div>
-          </div>
 
-          <!-- SLOT 1 — Reel 2 -->
-          <div class="ig-embed-slot" id="igSlot1">
-            <div class="ig-embed-placeholder">
-              <div class="ig-placeholder-inner">
-                <div class="ig-ph-icon">▶</div>
-                <p class="ig-ph-label">Colab · Baskonik Style</p>
-                <p class="ig-ph-sub">Pega aqui el embed de Instagram</p>
-                <code class="ig-ph-code">&lt;blockquote class="instagram-media"
-  data-instgrm-permalink="https://www.instagram.com/reel/CODIGO_REEL_2/"
-  ...&gt;&lt;/blockquote&gt;</code>
+            <!-- Panel Reel 2 -->
+            <div class="reel-panel rp2">
+              <div class="caption">
+                <b>Colab · Baskonik Style 🧥</b>
+                <span>@uxuegomeez x Baskonik</span>
+              </div>
+              <div class="actions">
+                <div>❤️<div class="n">9.1K</div></div>
+                <div>💬<div class="n">184</div></div>
+                <div>✈️<div class="n">940</div></div>
               </div>
             </div>
-          </div>
 
-          <!-- SLOT 2 — Reel 3 -->
-          <div class="ig-embed-slot" id="igSlot2">
-            <div class="ig-embed-placeholder">
-              <div class="ig-placeholder-inner">
-                <div class="ig-ph-icon">▶</div>
-                <p class="ig-ph-label">Un dia conmigo</p>
-                <p class="ig-ph-sub">Pega aqui el embed de Instagram</p>
-                <code class="ig-ph-code">&lt;blockquote class="instagram-media"
-  data-instgrm-permalink="https://www.instagram.com/reel/CODIGO_REEL_3/"
-  ...&gt;&lt;/blockquote&gt;</code>
+            <!-- Panel Reel 3 -->
+            <div class="reel-panel rp3">
+              <div class="caption">
+                <b>Un día conmigo en BCN 🌇</b>
+                <span>@uxuegomeez</span>
+              </div>
+              <div class="actions">
+                <div>❤️<div class="n">21.8K</div></div>
+                <div>💬<div class="n">560</div></div>
+                <div>✈️<div class="n">4.2K</div></div>
               </div>
             </div>
-          </div>
 
-          <!-- SLOT 3 — Reel 4 -->
-          <div class="ig-embed-slot" id="igSlot3">
-            <div class="ig-embed-placeholder">
-              <div class="ig-placeholder-inner">
-                <div class="ig-ph-icon">▶</div>
-                <p class="ig-ph-label">Unboxing · Frikimon</p>
-                <p class="ig-ph-sub">Pega aqui el embed de Instagram</p>
-                <code class="ig-ph-code">&lt;blockquote class="instagram-media"
-  data-instgrm-permalink="https://www.instagram.com/reel/CODIGO_REEL_4/"
-  ...&gt;&lt;/blockquote&gt;</code>
+            <!-- Panel Reel 4 -->
+            <div class="reel-panel rp4">
+              <div class="caption">
+                <b>Unboxing · Frikimon 📦</b>
+                <span>@uxuegomeez</span>
+              </div>
+              <div class="actions">
+                <div>❤️<div class="n">15.4K</div></div>
+                <div>💬<div class="n">240</div></div>
+                <div>✈️<div class="n">1.1K</div></div>
               </div>
             </div>
-          </div>
 
-        </div><!-- /ig-phone-screen -->
-        <div class="ig-side-btn ig-btn-vol-up"></div>
-        <div class="ig-side-btn ig-btn-vol-dn"></div>
-        <div class="ig-side-btn ig-btn-power"></div>
-      </div><!-- /ig-phone-device -->
+            <!-- Panel Reel 5 -->
+            <div class="reel-panel rp5">
+              <div class="caption">
+                <b>Tarde de terraza con amigas 🍹</b>
+                <span>@uxuegomeez</span>
+              </div>
+              <div class="actions">
+                <div>❤️<div class="n">18.9K</div></div>
+                <div>💬<div class="n">410</div></div>
+                <div>✈️<div class="n">2.3K</div></div>
+              </div>
+            </div>
 
-      <!-- Dots de navegacion -->
-      <div class="ig-dots">
-        <span class="ig-dot active" data-slot="0"></span>
-        <span class="ig-dot" data-slot="1"></span>
-        <span class="ig-dot" data-slot="2"></span>
-        <span class="ig-dot" data-slot="3"></span>
-      </div>
-    </div><!-- /ig-phone-wrap -->
+          </div><!-- /phone-screen -->
+        </div><!-- /phone-frame -->
+      </div><!-- /phone-tilt-wrap -->
+      <p class="phone-hint" style="color:var(--ink); opacity:0.65;">⚡ Desliza el móvil para ver más reels</p>
+    </div><!-- /lu-phone-col -->
 
-    <!-- ── MINIATURAS LATERALES ── -->
-    <div class="ig-thumbs">
-      <div class="ig-thumb active" data-slot="0"
-           style="background:linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.5)),url('assets/img/rutina-manana.jpg') center/cover">
-        <span class="ig-thumb-label">Rutina de manana ☕</span>
-      </div>
-      <div class="ig-thumb" data-slot="1"
-           style="background:linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.5)),url('assets/img/collab-sudadera.jpg') center/cover">
-        <span class="ig-thumb-label">Colab · Baskonik Style</span>
-      </div>
-      <div class="ig-thumb" data-slot="2"
-           style="background:linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.5)),url('assets/img/cafe-barcelona.jpg') center/cover">
-        <span class="ig-thumb-label">Un dia conmigo</span>
-      </div>
-      <div class="ig-thumb" data-slot="3"
-           style="background:linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.5)),url('assets/img/unboxing.jpg') center/cover">
-        <span class="ig-thumb-label">Unboxing · Frikimon</span>
-      </div>
-      <a href="https://www.instagram.com/uxuegomeez/" target="_blank" rel="noopener"
-         class="ig-thumbs-more">Ver todos los reels en Instagram →</a>
-    </div>
+    <!-- Grid de contenidos (YouTube, Reels, TikTok, etc.) -->
+    <div class="lu-content-grid">
+      
+      <!-- Reel 1 Card -->
+      <a href="https://www.instagram.com/uxuegomeez/" target="_blank" rel="noopener" class="lu-card">
+        <div class="lu-card-photo" style="background-image:url('assets/img/rutina-manana.jpg')">
+          <span class="lu-card-photo-label">Rutina de mañana ☕</span>
+        </div>
+        <div class="lu-card-meta">
+          <span class="lu-card-platform">Instagram Reel</span>
+          <span>14.2K likes</span>
+        </div>
+      </a>
 
-  </div><!-- /ig-phone-layout -->
+      <!-- Reel 2 Card -->
+      <a href="https://www.instagram.com/uxuegomeez/" target="_blank" rel="noopener" class="lu-card">
+        <div class="lu-card-photo" style="background-image:url('assets/img/collab-sudadera.jpg')">
+          <span class="lu-card-photo-label">Colab Baskonik 🧥</span>
+        </div>
+        <div class="lu-card-meta">
+          <span class="lu-card-platform">Reel patrocinado</span>
+          <span>84K reproducciones</span>
+        </div>
+      </a>
 
-  <!-- Script oficial de Instagram embeds (solo actua cuando hay blockquotes reales) -->
-  <script async defer src="//www.instagram.com/embed.js"></script>
+      <!-- YouTube Video Card (Wide) -->
+      <a href="https://www.youtube.com/@uxuegomeez" target="_blank" rel="noopener" class="lu-card lu-card-wide">
+        <div class="lu-yt-placeholder">
+          <div class="lu-yt-play">▶</div>
+          <span class="lu-yt-label">VLOG 24H CONMIGO · YOUTUBE</span>
+        </div>
+        <div class="lu-card-meta">
+          <span class="lu-card-platform" style="background:#FFE6E6; color:#CC0000">YouTube Video</span>
+          <span>Nuevo canal · Suscríbete</span>
+        </div>
+      </a>
+
+      <!-- Reel 3 Card -->
+      <a href="https://www.instagram.com/uxuegomeez/" target="_blank" rel="noopener" class="lu-card">
+        <div class="lu-card-photo" style="background-image:url('assets/img/cafe-barcelona.jpg')">
+          <span class="lu-card-photo-label">Un día conmigo 🌇</span>
+        </div>
+        <div class="lu-card-meta">
+          <span class="lu-card-platform">Viral</span>
+          <span>+1M reproducciones</span>
+        </div>
+      </a>
+
+      <!-- TikTok Card -->
+      <a href="https://www.tiktok.com/@uxuegomeez" target="_blank" rel="noopener" class="lu-card">
+        <div class="lu-tt-placeholder">
+          <span style="font-size:1.8rem">🎵</span>
+          <span style="font-weight:700; font-size:0.95rem">Get Ready With Me</span>
+        </div>
+        <div class="lu-card-meta">
+          <span class="lu-card-platform" style="background:#E6F7FF; color:#006699">TikTok</span>
+          <span>45K views</span>
+        </div>
+      </a>
+
+    </div><!-- /lu-content-grid -->
+  </div><!-- /lo-ultimo-layout -->
 </section>
 
 
@@ -211,42 +202,93 @@
     <div class="kicker">Como trabajo</div>
     <h2>No me gusta encasillarme.</h2>
     <p>Creo contenido que entretiene pero tambien conecta: fresco, con ritmo, sin filtros innecesarios. Muestro lo bueno, lo ridiculo y lo cotidiano — siempre siendo yo.</p>
-  </div>
-</section>
-
-
-<!-- ══ MARCAS ════════════════════════════════════════════════════== -->
-<section class="marcas">
-  <div class="wrap">
-    <p class="label">Marcas y negocios con los que ha colaborado</p>
-    <div class="marca-row">
-      <div class="marca-chip">Baskonik Style</div>
-      <div class="marca-chip">Frikimon</div>
-      <div class="marca-chip">Apasos Vitoria-Gasteiz</div>
+    <div class="aboutband-pills">
+      <span>Lifestyle</span><span>Humor</span><span>Colaboraciones</span><span>Unboxing</span>
     </div>
   </div>
 </section>
 
 
-<!-- ══ TRABAJOS ══════════════════════════════════════════════════== -->
-<section class="work-header photo-surface photo-work" id="trabajos">
-  <div class="photo-tint"></div>
-  <div class="work-header-copy">
-    <h2>Trabajos recientes</h2>
-    <p>Colaboraciones reales con marcas y negocios que han confiado en mi. Pasa el raton por encima.</p>
+<!-- ══ COLABORACIONES (Marcas + Trabajos unificados) ══════════════ -->
+<section class="colaboraciones" id="trabajos">
+  <div class="colaboraciones-head wrap">
+    <div>
+      <h2>Colaboraciones</h2>
+      <p>Marcas y negocios que han confiado en mi para llegar a una audiencia real y comprometida.</p>
+    </div>
+    <a href="#contacto" class="btn-dark">Colaborar →</a>
   </div>
-</section>
 
-<div class="portfolio">
-  <div class="pgrid" id="pgrid">
-    <div class="pitem p1"><div class="info"><b>Baskonik Style</b><span>Promo de su nueva sudadera</span></div></div>
-    <div class="pitem p2"><div class="info"><b>Frikimon</b><span>Unboxing y resena</span></div></div>
-    <div class="pitem p3"><div class="info"><b>Apasos Vitoria-Gasteiz</b><span>Video de su servicio de paseos · 12,3K vistas</span></div></div>
-    <div class="pitem p4"><div class="info"><b>Contenido propio</b><span>+1M de reproducciones</span></div></div>
-    <div class="pitem p5"><div class="info"><b>Contenido propio</b><span>407K reproducciones</span></div></div>
-    <div class="pitem p6"><div class="info"><b>Contenido propio</b><span>Rutina semanal</span></div></div>
-  </div>
-</div>
+  <div class="colab-grid wrap">
+
+    <!-- Baskonik Style — featured -->
+    <div class="colab-card colab-card-featured">
+      <div class="colab-img" style="background:url('assets/img/collab-sudadera.jpg') center/cover">
+        <span class="colab-badge">Moda</span>
+      </div>
+      <div class="colab-body">
+        <p class="colab-type">Reel patrocinado</p>
+        <h3 class="colab-brand">Baskonik Style</h3>
+        <p class="colab-desc">Promo de su nueva coleccion de sudaderas. Reel organico integrado en mi rutina diaria, sin cortes ni guion forzado. Resultado: sold-out en 48h.</p>
+        <div class="colab-stats">
+          <div class="colab-stat"><strong>84K</strong><span>Vistas</span></div>
+          <div class="colab-stat"><strong>9.1K</strong><span>Likes</span></div>
+          <div class="colab-stat"><strong>6.2%</strong><span>Engagement</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Frikimon -->
+    <div class="colab-card">
+      <div class="colab-img" style="background:url('assets/img/unboxing.jpg') center/cover">
+        <span class="colab-badge">Gaming &amp; Ocio</span>
+      </div>
+      <div class="colab-body">
+        <p class="colab-type">Unboxing + resena</p>
+        <h3 class="colab-brand">Frikimon</h3>
+        <p class="colab-desc">Unboxing en formato reel + historia. Reaccion autentica, sin edicion excesiva.</p>
+        <div class="colab-stats">
+          <div class="colab-stat"><strong>96K</strong><span>Vistas</span></div>
+          <div class="colab-stat"><strong>15K</strong><span>Likes</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Apasos -->
+    <div class="colab-card">
+      <div class="colab-img" style="background:url('assets/img/amigas-terraza.jpg') center/cover">
+        <span class="colab-badge">Servicios locales</span>
+      </div>
+      <div class="colab-body">
+        <p class="colab-type">Video de servicio</p>
+        <h3 class="colab-brand">Apasos Vitoria-Gasteiz</h3>
+        <p class="colab-desc">Video mostrando el servicio de paseos de perros. Tono cercano y divertido que conecta con duenos de mascotas.</p>
+        <div class="colab-stats">
+          <div class="colab-stat"><strong>12.3K</strong><span>Vistas</span></div>
+          <div class="colab-stat"><strong>+35</strong><span>Contactos directos</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contenido propio destacado -->
+    <div class="colab-card colab-card-featured">
+      <div class="colab-img" style="background:url('assets/img/cafe-barcelona.jpg') center/cover">
+        <span class="colab-badge">Contenido propio</span>
+      </div>
+      <div class="colab-body">
+        <p class="colab-type">Lifestyle · Viral</p>
+        <h3 class="colab-brand">"Un dia conmigo"</h3>
+        <p class="colab-desc">Reel de formato libre, sin marca, que alcanza +1M de reproducciones. El tipo de alcance organico que las marcas quieren aprovechar.</p>
+        <div class="colab-stats">
+          <div class="colab-stat"><strong>+1M</strong><span>Reproducciones</span></div>
+          <div class="colab-stat"><strong>21K</strong><span>Likes</span></div>
+          <div class="colab-stat"><strong>560</strong><span>Comentarios</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /colab-grid -->
+</section>
 
 
 <!-- ══ CONTACTO ══════════════════════════════════════════════════== -->
